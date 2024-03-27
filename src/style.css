@@ -24,6 +24,11 @@ td {
   text-align: center;
 }
 
+th{
+    background-color: #777777;
+    color: white;
+}
+
 td{
     padding: 8px;
 }
