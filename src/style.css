@@ -1,8 +1,8 @@
-.title{
+.title {
     text-align: center;
 }
 
-.card{
+.card {
     border: 1px solid #999;
     border-radius: 9px;
     width: 250px;
@@ -11,4 +11,32 @@
 input[type="text"] {
     width: 200px;
     height: 25px;
+}
+
+th,
+td {
+  height: 30px;
+  text-align: center;
+}
+
+.id{
+    width: 120px;
+}
+
+.name{
+    text-align: left;
+}
+
+.company{
+    width: 150px;
+}
+
+.price{
+    width: 100px;
+    text-align: right;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
 }
