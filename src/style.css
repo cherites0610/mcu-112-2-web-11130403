@@ -3,7 +3,8 @@
 }
 
 .card{
-    border: 1px solid red;
+    border: 1px solid #999;
+    border-radius: 9px;
     width: 250px;
 }
 
