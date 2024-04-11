@@ -7,7 +7,6 @@ const product = new Product(
     500,
     true,
     new Date(2024, 3, 10),
-    undefined
 );
 
 console.log(product)
