@@ -8,4 +8,8 @@ export class Product {
         public createDate: Date,
         public modifyDate?: Date
     ) { }
+
+    setDisplay(isShow: boolean){
+        this.isShow = isShow;
+    }
 }
