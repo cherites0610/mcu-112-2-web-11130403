@@ -18,5 +18,9 @@ const products = [
     )
 ];
 
+setProductDisplay(products[0],false);
 console.log(products)
-console.table(products)
+
+function setProductDisplay(product: Product,isShow: boolean){
+    product.isShow=isShow;
+}
