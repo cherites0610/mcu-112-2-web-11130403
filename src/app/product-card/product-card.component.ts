@@ -12,9 +12,10 @@ export class ProductCardComponent {
   @Input() productName!: string;
   @Input() author!: string;
   @Input() company!: string;
-  @Input({ transform: booleanAttribute }) isShow!: boolean;
   @Input() imgUrl!: string;
 
+  @Input({transform: booleanAttribute})
+  isShow!: boolean;
   @Output()
   isShowChange = new EventEmitter<boolean>();
 
