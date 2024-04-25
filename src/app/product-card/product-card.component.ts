@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './product-card.component.css'
 })
 export class ProductCardComponent {
-
+  productName = '書籍A';
+  author = '作者甲，作者乙，作者丙';
+  company = '博碩文化'
 }
