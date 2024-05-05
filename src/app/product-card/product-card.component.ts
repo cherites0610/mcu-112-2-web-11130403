@@ -11,7 +11,7 @@ import { Component, EventEmitter, Input, Output, booleanAttribute, numberAttribu
 export class ProductCardComponent {
   @Input({required: true, transform: numberAttribute}) id!: number;
   @Input() productName!: string;
-  @Input() author!: string;
+  @Input() authors!: string;
   @Input() company!: string;
   @Input() imgUrl!: string;
   @Input() createDate!: Date;
