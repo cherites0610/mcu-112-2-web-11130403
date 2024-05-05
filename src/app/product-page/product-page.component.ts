@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, Output } from '@angular/core';
 import { ProductCardListComponent } from '../product-card-list/product-card-list.component';
 import { Product } from '../model/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-page',
@@ -52,4 +53,16 @@ export class ProductPageComponent {
       price: 10000,
     }),
   ];
+
+  router = inject(Router)
+
+  @Output()
+  onView(product: Product): void {
+    this.router.navigate(['product', 'view', product.id]);
+  }
+
+  @Output()
+  onEdit(product: Product): void {
+    this.router.navigate(['product', 'form', product.id]);
+  }
 }

@@ -5,10 +5,13 @@
       [productName]="product.name"
       [authors]="product.authors"
       [company]="product.company"
-      [(isShow)]="product.isShow"
+      [isShow]="product.isShow"
       [imgUrl]="product.imgUrl"
       [createDate]="product.createDate"
       [price]="product.price"
+      (view)="view.emit(product)"
+      (edit)="edit.emit(product)"
+      (remove)="remove.emit(product)"
     ></app-product-card>
     } @empty {
       <div class="data-empty">
