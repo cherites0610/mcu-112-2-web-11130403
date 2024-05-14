@@ -32,4 +32,9 @@ export class ProductDetailPageComponent {
   onBack(): void {
     this.router.navigate(['products']);
   }
+
+  onRemove(): void {
+    this.productService.remove(this.product.id);
+    this.router.navigate(['products']);
+  }
 }
