@@ -44,4 +44,10 @@ export class ProductPageComponent {
   onEdit(product: Product): void {
     this.router.navigate(['product', 'form', product.id]);
   }
+
+  @Output()
+  onRemove({ id }: Product): void {
+    // console.log(id);
+    this.productService.remove(id);
+  }
 }
