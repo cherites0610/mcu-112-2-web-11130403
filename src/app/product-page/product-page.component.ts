@@ -19,7 +19,7 @@ export class ProductPageComponent {
   products!: Product[];
 
   ngOnInit(): void {
-    this.products = this.productService.getDate();
+    this.productService.getDate().subscribe( (products) => { this.products = products} );
   }
 
   onAdd(): void {
