@@ -20,7 +20,8 @@ export class ProductDetailPageComponent {
   productService = inject(ProductService); 
 
   ngOnInit(): void {
-    this.product = this.productService.getById(this.id);
+    // this.product = this.productService.getById(this.id);
+    this.productService.getById(this.id).subscribe( (product) => (this.product = product) )
   }
 
   private router = inject(Router);
