@@ -3,6 +3,7 @@ import { ProductCardListComponent } from '../product-card-list/product-card-list
 import { Product } from '../model/product';
 import { Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
+import { startWith, Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-product-page',
@@ -18,7 +19,15 @@ export class ProductPageComponent {
 
   products!: Product[];
 
+  private readonly refresh$ = new Subject<void>();
+
   ngOnInit(): void {
+    this.refresh$
+      .pipe(
+        startWith(undefined),
+        switchMap(() => this.productService.getDate())
+      )
+      .subscribe((products => (this.products = products)))
     this.productService.getDate().subscribe( (products) => { this.products = products} );
   }
 
@@ -32,7 +41,7 @@ export class ProductPageComponent {
       createDate: new Date(),
       price: 10000,
     });
-    this.productService.add(product).subscribe();
+    this.productService.add(product).subscribe(() => this.refresh$.next());
   }
 
   @Output()
@@ -48,6 +57,6 @@ export class ProductPageComponent {
   @Output()
   onRemove({ id }: Product): void {
     // console.log(id);
-    this.productService.remove(id).subscribe();
+    this.productService.remove(id).subscribe(() => this.refresh$.next());
   }
 }
