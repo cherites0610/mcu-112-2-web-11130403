@@ -35,7 +35,7 @@ export class ProductDetailPageComponent {
   }
 
   onRemove(): void {
-    this.productService.remove(this.product.id);
+    this.productService.remove(this.product.id).subscribe;
     this.router.navigate(['products']);
   }
 }

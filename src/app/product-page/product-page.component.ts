@@ -32,7 +32,7 @@ export class ProductPageComponent {
       createDate: new Date(),
       price: 10000,
     });
-    this.productService.add(product);
+    this.productService.add(product).subscribe();
   }
 
   @Output()
@@ -48,6 +48,6 @@ export class ProductPageComponent {
   @Output()
   onRemove({ id }: Product): void {
     // console.log(id);
-    this.productService.remove(id);
+    this.productService.remove(id).subscribe();
   }
 }
