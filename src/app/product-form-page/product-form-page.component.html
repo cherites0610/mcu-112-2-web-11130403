@@ -1,42 +1,43 @@
-<div class="container">
+<div class="container" [formGroup]="form">
     <div class="form-item">
-      <div class="form-column">
-        <label>名稱</label>
-        <input type="text" />
-      </div>
-      <div class="error-message">請輸入產品名稱</div>
-    </div>
-    <div class="form-item">
-      <div class="form-column">
-        <label>作者</label>
-        <button type="button">新增</button>
-      </div>
-    </div>
-    <div class="form-item">
-      <div class="form-column">
-        <div>
-          <button type="button">刪除</button>
+        <div class="form-column">
+            <label>名稱</label>
+            <input type="text" formControlName="name" />
         </div>
-        <input type="text" />
-      </div>
-      <div class="error-message">請輸入作者</div>
+        <div class="error-message">請輸入產品名稱</div>
     </div>
     <div class="form-item">
-      <div class="form-column">
-        <label>出版社</label>
-        <input type="text" />
-      </div>
-      <div class="error-message">請輸入出版社</div>
+        <div class="form-column">
+            <label>作者</label>
+            <button type="button">新增</button>
+        </div>
     </div>
     <div class="form-item">
-      <div class="form-column">
-        <label>單價</label>
-        <input type="text" />
-      </div>
-      <div class="error-message">請輸入單價</div>
+        <div class="form-column">
+            <div>
+                <button type="button">刪除</button>
+            </div>
+            <input type="text" />
+        </div>
+        <div class="error-message">請輸入作者</div>
+    </div>
+    <div class="form-item">
+        <div class="form-column">
+            <label>出版社</label>
+            <input type="text" formControlName="company" />
+        </div>
+        <div class="error-message">請輸入出版社</div>
+    </div>
+    <div class="form-item">
+        <div class="form-column">
+            <label>單價</label>
+            <input type="text" formControlName="price" />
+        </div>
+        <div class="error-message">請輸入單價</div>
     </div>
     <div class="form-action">
-      <button type="button">取消</button>
-      <button type="button" class="save">儲存</button>
+        <button type="button">取消</button>
+        <button type="button" class="save">儲存</button>
     </div>
-  </div>
+    <pre>{{ form.value | json }}</pre>
+</div>
