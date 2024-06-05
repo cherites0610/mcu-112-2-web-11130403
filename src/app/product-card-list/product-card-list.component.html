@@ -1,21 +1,14 @@
 <div class="container">
   @for (product of products; track product.id) {
-    <app-product-card
-      [id]="product.id"
-      [productName]="product.name"
-      [authors]="product.authors"
-      [company]="product.company"
-      [isShow]="product.isShow"
-      [imgUrl]="product.imgUrl"
-      [createDate]="product.createDate"
-      [price]="product.price"
-      (view)="view.emit(product)"
-      (edit)="edit.emit(product)"
-      (remove)="remove.emit(product)"
-    ></app-product-card>
-    } @empty {
-      <div class="data-empty">
-        無產品資料
-      </div>
-    }
+  <app-product-card [id]="product.id" [productName]="product.name" [authors]="product.authors"
+    [company]="product.company" [isShow]="product.isShow" [imgUrl]="product.imgUrl" [createDate]="product.createDate"
+    [price]="product.price" (view)="view.emit(product)" (edit)="edit.emit(product)"
+    (remove)="remove.emit(product)"></app-product-card>
+  } @empty {
+  <div class="data-empty">
+    無產品資料
+  </div>
+  }
 </div>
+
+<app-pagination totalCount="7" pageSize="5" [(pageIndex)]="pageIndex"></app-pagination>
