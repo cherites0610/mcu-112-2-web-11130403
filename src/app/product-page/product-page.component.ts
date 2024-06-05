@@ -24,7 +24,7 @@ export class ProductPageComponent {
 
   readonly products$ = this.refresh$.pipe(
     startWith(undefined),
-    switchMap(() => this.productService.getDate())
+    switchMap(() => this.productService.getList('書籍 A', 1, 5))
   );
 
   onAdd(): void {
