@@ -1,11 +1,11 @@
 <div class="toolbar">
   <button type="button" (click)="onAdd()">新增</button>
+  <span>
+    <input type="text" placeholder="產品名稱" [formControl]="formControl" />
+    <button type="button">查詢</button>
+  </span>
 </div>
 
-<span>
-  <input type="text" placeholder="產品名稱" [formControl]="formControl" />
-  <button type="button">查詢</button>
-</span>
-
-<app-product-card-list [products]="(products$ | async) || []" (view)="onView($event)" (edit)="onEdit($event)"
-  (remove)="onRemove($event)"></app-product-card-list>
+<app-product-card-list [products]="(products$ | async) || []" [totalCount]="(totalCount$ | async) || 0"
+  [(pageIndex)]="pageIndex" [pageSize]="pageSize" (edit)="onEdit($event)" (remove)="onRemove($event)"
+  (view)="onView($event)"></app-product-card-list>

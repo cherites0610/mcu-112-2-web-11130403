@@ -25,6 +25,15 @@ export class ProductPageComponent {
 
   protected readonly formControl = new FormControl<string | undefined>(undefined);
 
+  protected pageSize = 5;
+
+  pageIndex = 1;
+
+  readonly totalCount$ = this.refresh$.pipe(
+    startWith(undefined),
+    switchMap(() => this.productService.getCount())
+  );
+
   readonly products$ = this.refresh$.pipe(
     startWith(undefined),
     switchMap(() => this.productService.getList(undefined, 1, 5))

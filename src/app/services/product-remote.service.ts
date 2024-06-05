@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { ProductService } from "./product.service";
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 import { Product } from "../model/product";
 
 @Injectable({
@@ -27,4 +27,9 @@ export class ProductRemoteService extends ProductService {
     override remove(productId: number): Observable<Product> {
         return this.httpClient.delete<Product>(`${this.url}/${productId}`);
     }
+
+    override getCount(name?: string): Observable<number> {
+        const option = name ? { params: new HttpParams().set('name', name) } : {};
+        return this.httpClient.get<Product[]>(this.url, option).pipe(map((data) => data.length));
+      }
 }

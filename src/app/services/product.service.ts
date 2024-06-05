@@ -73,6 +73,10 @@ export class ProductService {
     return of(newProduct);
   }
 
+  getCount(name?: string): Observable<number> {
+    throw new Error('NO');
+  }
+
   remove(productId: number): Observable<Product> {
     const product = this._data.find(({ id }) => productId === id)!;
     this._data = [...this._data.filter(({ id }) => productId !== id)];

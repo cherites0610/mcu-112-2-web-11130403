@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, numberAttribute, Output } from '@angular/core';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { Product } from '../model/product';
 import { PaginationComponent } from '../pagination/pagination.component';
@@ -17,8 +17,17 @@ export class ProductCardListComponent {
   @Output()
   view = new EventEmitter<Product>();
 
-  pageIndex = 1;
+  @Input({ required: true, transform: numberAttribute })
+  totalCount!: number;
 
+  @Input({ required: true, transform: numberAttribute })
+  pageSize!: number;
+
+  @Input({ required: true, transform: numberAttribute })
+  pageIndex = 1;
+  
+  @Output()
+  pageIndexChange = new EventEmitter<number>();
   @Output()
   edit = new EventEmitter<Product>();
 
