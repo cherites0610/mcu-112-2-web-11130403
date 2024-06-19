@@ -15,18 +15,17 @@
       "price": 10000
     },
     {
-      "name": "書籍 Z",
+      "id": 2,
+      "name": "書籍 B",
       "authors": [
         "作者甲",
-        "作者乙",
-        "作者丙"
+        "作者乙"
       ],
       "company": "博碩文件",
       "isShow": true,
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
-      "createDate": "2024-05-29T15:42:05.097Z",
-      "price": 10000,
-      "id": 2
+      "createDate": "2024-06-19T09:53:11.752Z",
+      "price": 10000
     },
     {
       "name": "書籍 Z",
