@@ -1,11 +1,12 @@
 import { JsonPipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Data } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { map } from 'rxjs';
 
 import { Product } from '../model/product';
 import { IProductForm } from '../interface/product-form.interface';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-form-page',
@@ -23,7 +24,7 @@ export class ProductFormPageComponent implements OnInit {
     authors: new FormArray<FormControl<string | null>>([]),
     company: new FormControl<string | null>(null, { validators: [Validators.required] }),
     isShow: new FormControl<boolean>(false, { nonNullable: true }),
-    price: new FormControl<string | null>(null, { validators: [Validators.required, Validators.pattern('^[0-9]$')] }),
+    price: new FormControl<number | null>(null, { validators: [Validators.required] }),
   });
 
   get name(): FormControl<string | null> {
@@ -38,9 +39,17 @@ export class ProductFormPageComponent implements OnInit {
     return this.form.get('company') as FormControl<string | null>;
   }
 
-  get price(): FormControl<string | null> {
-    return this.form.get('price') as FormControl<string | null>;
+  get isShow(): FormControl<boolean> {
+    return this.form.get('isShow') as FormControl<boolean>;
   }
+
+  get price(): FormControl<number | null> {
+    return this.form.get('price') as FormControl<number | null>;
+  }
+
+  private readonly router = inject(Router);
+
+  private readonly productService = inject(ProductService);
 
   product!: Product;
 
@@ -51,5 +60,22 @@ export class ProductFormPageComponent implements OnInit {
   onAddAuthors(): void {
     const formControl = new FormControl<string | null>(null, { validators: [Validators.required] });
     this.authors.push(formControl);
+  }
+
+  onSave(): void {
+    const formData = new Product({
+      name: this.name.value!,
+      authors: this.authors.value.map((author) => author!),
+      company: this.company.value!,
+      isShow: this.isShow.value,
+      imgUrl: 'https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img',
+      createDate: new Date(),
+      price: this.price.value!,
+    });
+    this.productService.add(formData).subscribe(() => this.router.navigate(['products']));
+  }
+
+  onCancel(): void {
+    this.router.navigate(['products']);
   }
 }
